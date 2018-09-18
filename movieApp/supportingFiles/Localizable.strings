@@ -1,0 +1,13 @@
+/* 
+  msg.strings
+  movieApp
+
+  Created by Devp.ios on 18/09/18.
+  Copyright © 2018 Devp.ios. All rights reserved.
+*/
+
+"detailViewModelController.overview"="Descripción: ";
+"detailViewModelController.voteCountMovie"="Votos: ";
+"detailViewModelController.vote_average"="Calificación: ";
+
+
