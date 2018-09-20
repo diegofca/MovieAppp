@@ -1,0 +1,60 @@
+DIEGO FERNANDO CUESTA AREVALO
+
+Capas de la aplicación:
+
+1. Vistas :
+	-  Item de las tablas:  ItemListTableViewCell.swift.  - Configuración de vista de cada celda.
+	-  tabstMoviesView.swift.  - Contenedor de tabs y vistas 
+	-  popularTableViewController.swift - Vista que contiene las películas de categoría popular
+	-  DetailMovieViewController.swift - Vista que muestra el detalle de la película seleccionada en las tablas
+	-  TopRatingTableViewController.swift. - Vista que contiene las películas de categoría top rating 
+	-  UpComingTableViewController.swift - Vista que contiene las películas de categoría upcoming
+	-  HomeViewController.swift. - Vista home inicial para descarga de datos necesarios (Generosa)
+
+2. View Model 
+	-  ListMovieVM.swift.   -   Viewmodel para manejo de datos de las tablas (popular, upcoming y top rating)
+	-  DetailMovieVM.swift -  Viewmodel para manejo de datos de la vista detalle de la película seleccionada
+	-  HomeVieMovieVM.swift  -  Viewmodel para manejo de datos de la vista Home, (controlador de descarga de datos importantes)
+	-  ItemMovieVM.swift. - Viewmodel para manejo de datos de cada ítem en las tablas, congfiguración del clear Poolbject de cada tabla
+
+3. Model
+    1.  - IO
+		-  Constatns.swift.   - Variables constantes usadas en distintos modelos de la aplicación
+		-  Utils.swift.            - Funciones primarias y estáticas para configuración de data y UI
+		-  Service.swift	 - Funciones del Rest Api para acceso de datos.
+	
+	-  Movie.swift.     -   Modelo “Pelicula” que facilita el control de los datos de cada ítem.
+	-  Gender.swift.   -  Modelo “Genero” que facilita el control del campo gender de la entidad “Movie”
+	-  PopularMovies.swift.   -  Modelo película para persistencia de datos de tipo Popular Movie object.(Lista)
+	-  TopRatingMovies.swift. -  Modelo película para persistencia de datos de tipo Top Rating Movie object.(Lista)
+	-  UpComingMovies.swift. -  Modelo película para persistencia de datos de tipo UpComing Movie object.(Lista)
+
+4. SupportingFiles
+    1. Lottie Anima
+		- Movie_loading.json.  - Archivo Son para lectura de pod “lottie” para implementación de animaciones.
+	-  Assets   -  (Imágenes, iconApp)
+	-  AppDelegate. 
+	-  Localizables Strings.  - Archivo Resource que guarda variables tipo Strings para Internacionalización de idioma.
+
+
+Pods:
+
+- Alamofire. —  Peticiones HTTP, Rest Api
+- AlamofireObjectMapper.  — Serializacion de JSON a objectos(Entidades o clases)
+- AlamofireImage —  Peticiones para descarga de imágenes 
+- KVLoading —  Instancia de loader (Progress) 
+- RealmSwift — Gestor de base de datos nube y local - (Persistencia de datos)
+- Material — Modificador de componentes de UIKit - UI
+- Lottie-Ios — Gestor de animaciones para componentes UIKit.
+
+
+1. En qué consiste el principio de responsabilidad única? Cuál es su propósito?
+	
+	Es un principio SOLID que se refiere a que cada clase o entidad debe tener una sola responsabilidad sobre alguna funcionalidad.
+	todas sus funciones deben tener relación con su responsabilidad.
+
+2. Qué características tiene, según su opinión, un “buen” código o código limpio
+
+	- Bases de programación
+	- Principios SOLID (en lo posible)
+	- Documentación de código
