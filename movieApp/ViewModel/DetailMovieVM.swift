@@ -12,6 +12,8 @@ import AVKit
 
 class DetailMovieVM {
 
+    var movie: Movie!
+
     func setTrailer(url: String, view : UIView, success:@escaping (AVPlayerViewController) -> Void) {
         let player = AVPlayer(url: URL(string: url )!)
         let avpController = AVPlayerViewController()
@@ -20,6 +22,10 @@ class DetailMovieVM {
         avpController.view.frame.size.width = view.frame.size.width
         view.addSubview(avpController.view)
         success(avpController)
+    }
+    
+    func getPoster(_ url: String ){
+        
     }
     
 }

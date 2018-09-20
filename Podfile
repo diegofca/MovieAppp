@@ -12,6 +12,7 @@ target 'movieApp' do
   pod 'KVLoading'
   pod 'RealmSwift'
   pod 'Material'
+  pod 'lottie-ios'
 
   target 'movieAppTests' do
     inherit! :search_paths

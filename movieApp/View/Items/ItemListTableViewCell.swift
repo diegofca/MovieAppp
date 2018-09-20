@@ -10,17 +10,27 @@ import UIKit
 
 class ItemListTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var nameMovieTxt: UILabel?
+    @IBOutlet weak var containView: UIView!
+    @IBOutlet weak var nameMovieTxt: UILabel!
     @IBOutlet weak var genderMovieTxt: UILabel!
     @IBOutlet weak var detailBtn: UIButton!
+    @IBOutlet weak var viewAnim: UIView!
+    
+    var posterImg: UIImageView!
+
+    var viewModelitem : ItemMovieVM!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.viewShadow()
+        self.containView.viewShadow()
+        viewModelitem = ItemMovieVM()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
+    
+   
 
 }

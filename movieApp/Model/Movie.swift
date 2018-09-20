@@ -8,6 +8,7 @@
 
 import Foundation
 import ObjectMapper
+import RealmSwift
 
 class Movie: Mappable {
     
@@ -20,9 +21,12 @@ class Movie: Mappable {
     var vote_average: Float!
     var popularity: Float!
     var release_date: String!
-    var path_trailer: String = "https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" // Deje el link quemado porque la lista que descargo no tiene ningun campo que retonro un link para video
+    var path_trailer: String = "https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" // Deje el link quemado porque la lista que descargo no tiene ningun campo que retorne un link para video
+  
+    var firtsGender: String!
+    var secondGender: String!
     
-    init(){ }
+    init() {}
     
     required init (map: Map) {
         self.id <- map["id"]
@@ -40,6 +44,29 @@ class Movie: Mappable {
     
 }
 
+// Clase para base de datos local REALM IO
+class MovieObject: Object{
+    dynamic var uId = 0
+    dynamic var id: String!
+    dynamic var title: String!
+    dynamic var poster_path: String!
+    dynamic var overview: String!
+    dynamic var vote_count: String!
+    dynamic var vote_average: String!
+    dynamic var popularity: String!
+    dynamic var release_date: String!
+    dynamic var path_trailer: String!
+    
+    override class func primaryKey() -> String? {
+        return "uId"
+    }
+    
+    var firtsGender: GenderObject!
+    var secondGender: GenderObject!
+
+}
+
+// Clase para mapeo de list del objecto MOVIE
 class MovieList : Mappable{
     var movies : [Movie]!
     required init?(map: Map) {}

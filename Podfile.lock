@@ -6,6 +6,7 @@ PODS:
     - Alamofire (~> 4.1)
     - ObjectMapper (~> 3.3)
   - KVLoading (1.6)
+  - lottie-ios (2.5.0)
   - Material (2.16.4):
     - Material/Core (= 2.16.4)
   - Material/Core (2.16.4):
@@ -25,6 +26,7 @@ DEPENDENCIES:
   - AlamofireImage
   - AlamofireObjectMapper (~> 5.0)
   - KVLoading
+  - lottie-ios
   - Material
   - RealmSwift
 
@@ -34,6 +36,7 @@ SPEC REPOS:
     - AlamofireImage
     - AlamofireObjectMapper
     - KVLoading
+    - lottie-ios
     - Material
     - Motion
     - ObjectMapper
@@ -45,12 +48,13 @@ SPEC CHECKSUMS:
   AlamofireImage: 5f79836de27236819b13b27d0c97be6c205976fe
   AlamofireObjectMapper: 3395e698901d8b0e6f48b7d0c43bd47875325102
   KVLoading: c308285b468592fc4f0b725d0a9857a3554d0e7e
+  lottie-ios: d699fdee68d7b63e721d949388b015fef1aaa4ac
   Material: 4ed78690b09ffd148b5ffab6b4367fb1d8da1cd3
   Motion: 153ba49692997888556c7a95207278a8b1f8be95
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
   Realm: 3d36f208bf3aff8335dc3298742140182bde4edb
   RealmSwift: aa4d11917bfcfaa3ed51f219102a487ecd895447
 
-PODFILE CHECKSUM: 166e4c04d8bed2fa371c05fcc18e97318d91c969
+PODFILE CHECKSUM: ce5d5887623b6940955d8d20d6d4ecc4b4e02afb
 
 COCOAPODS: 1.5.3

@@ -24,23 +24,22 @@ class DetailMovieViewController: UIViewController {
     @IBOutlet var release_date: UILabel!
     
     var movie: Movie!
-    var detailViewModelController: DetailMovieVM!
+    var detailViewModel: DetailMovieVM!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpViewModal()
         setUpView()
-        
     }
     
     func setUpViewModal(){
-        detailViewModelController = DetailMovieVM()
+        detailViewModel = DetailMovieVM()
     }
     
     func setUpView(){
         containerViewVideo.viewShadow()
         containerLabelsVideo.viewShadow()
-        detailViewModelController.setTrailer(url: movie.path_trailer, view: videoView) { (videoController) in
+        detailViewModel.setTrailer(url: movie.path_trailer, view: videoView) { (videoController) in
             self.present(videoController, animated: true) {
                 videoController.player!.play()
             }
@@ -50,30 +49,26 @@ class DetailMovieViewController: UIViewController {
         overviewMovie.text  = movie.overview
         voteCountMovie.text = "\(NSLocalizedString("detailViewModelController.voteCountMovie", comment: "")) \(movie.vote_count!)"
         vote_average.text   = String(movie.vote_average)
-        popularity.text = String(movie.popularity)
-        release_date.text = movie.release_date
+        popularity.text     = String(movie.popularity)
+        release_date.text   = movie.release_date
         
     }
     
+    @IBAction func backToList(_ sender: Any) {
+        print("fuck")
+        backNavigation()
+    }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     func backNavigation(){
-        navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
