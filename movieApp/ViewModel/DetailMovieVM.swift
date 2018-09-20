@@ -14,6 +14,7 @@ class DetailMovieVM {
 
     var movie: Movie!
 
+    // Configuracion de Video controller  --- TODO:(El video es el mismo para todos ya que el json no trae link)
     func setTrailer(url: String, view : UIView, success:@escaping (AVPlayerViewController) -> Void) {
         let player = AVPlayer(url: URL(string: url )!)
         let avpController = AVPlayerViewController()
@@ -22,10 +23,6 @@ class DetailMovieVM {
         avpController.view.frame.size.width = view.frame.size.width
         view.addSubview(avpController.view)
         success(avpController)
-    }
-    
-    func getPoster(_ url: String ){
-        
     }
     
 }

@@ -11,6 +11,7 @@ import Lottie
 
 class ItemMovieVM {
     
+    // Genera animacion a la vista seleccionada
     func loadAnimImage(_ viewcenter: UIView,_ name: String, success:@escaping (LOTAnimationView) -> Void) {
         let animationView = LOTAnimationView(name: name)
         animationView.contentMode = .scaleAspectFill
@@ -20,13 +21,15 @@ class ItemMovieVM {
         success(animationView)
     }
     
+    // instancia imagen de pelicula a la vista seleccionada
     func finishLoadImage(_ animView: UIView,_ imageView: UIView ) {
         animView.addSubview(imageView)
     }
     
+    // Metodo para carga de imagen de item Movie de las listas
     func getImage(_ cell: ItemListTableViewCell,_ movie: Movie,_ url: String){
         cell.posterImg.image = nil
-        loadAnimImage(cell.viewAnim, "movie_loading", success: { (Anim) in
+        loadAnimImage(cell.viewAnim, Constants.MOVIE_LOADING, success: { (Anim) in
             Anim.play()
             self.getImageItemMovie(nameMovie: movie.title , pathImage: url, success: { (getImage) in
                 DispatchQueue.main.async() {
@@ -35,15 +38,14 @@ class ItemMovieVM {
                         self.finishLoadImage(cell.viewAnim, cell.posterImg)
                     }
                 }
-                
             }, failure: { (error) in
                 print(error.localizedDescription)
             })
         })
     }
     
+    // Llamado al servicio de descarga de imagen por Http
     func getImageItemMovie(nameMovie: String, pathImage: String, success:@escaping (UIImage) -> Void, failure:@escaping (Error) -> Void){
-        print(pathImage)
         Services.getImageUrl(nameResocurce: nameMovie, imageUrl: pathImage, success: { (resultImage) in
             success(resultImage)
         }) { (error) in

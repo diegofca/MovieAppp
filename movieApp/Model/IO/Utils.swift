@@ -10,6 +10,34 @@ import Foundation
 import UIKit
 import KVLoading
 
+extension UIView{
+    
+    // Funcion utilizada para aplicar view shadow a view
+    func viewShadow(){
+        let COLOR_DARKGRAY:UIColor = UIColor.darkGray
+        self.layer.cornerRadius = 8.0
+        self.layer.shadowColor = COLOR_DARKGRAY.cgColor
+        self.layer.shadowOpacity = 0.8
+        self.layer.shadowRadius = 3.0
+        self.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
+    }
+    
+    
+    //Funcion utilizada para agregar imagen de background a uiViewController
+    func assignbackground(name:String){
+        let background = UIImage(named: name)
+        var imageView : UIImageView!
+        imageView = UIImageView(frame: self.bounds)
+        imageView.contentMode =  UIViewContentMode.scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.image = background
+        imageView.center = self.center
+        self.addSubview(imageView)
+        self.sendSubview(toBack: imageView)
+    }
+    
+}
+
 extension UIColor {
     func image(_ size: CGSize = CGSize(width: 1, height: 1)) -> UIImage {
         return UIGraphicsImageRenderer(size: size).image { rendererContext in
@@ -21,6 +49,7 @@ extension UIColor {
 
 class Utils {
     
+    // Mapeo de Objecto 'Movie' a 'MovieObject'
    static func mapMovieObject(_ movie: Movie) -> MovieObject{
         let oMovie          = MovieObject()
         oMovie.id           = String(movie.id)
@@ -35,6 +64,7 @@ class Utils {
         return oMovie
     }
     
+    // Mapeo de Objecto 'MovieObject' a 'Movie'
    static func mapMovie(_ oMovie: MovieObject) -> Movie{
         let nMovie          = Movie()
         nMovie.id           = Int(oMovie.id)
@@ -48,6 +78,7 @@ class Utils {
         return nMovie
     }
     
+    // Mapeo de Objecto 'GenderObject' a 'Gender'
     static func mapGender(_ oGender: GenderObject) -> Gender{
         let nGender  = Gender()
         nGender.id   = Int(oGender.id)
@@ -55,16 +86,18 @@ class Utils {
         return nGender
     }
     
+    // Creacion de Searchbar
     static func creatingSearhBarToTable() -> UISearchController{
         let searchController : UISearchController!
         let image = Constants.RED_WINE_COLOR.image(CGSize(width: 128, height: 128))
         searchController = UISearchController(searchResultsController: nil)
         searchController?.obscuresBackgroundDuringPresentation = false
-        searchController?.searchBar.placeholder = "Nombre pelicula"
+        searchController?.searchBar.placeholder = "Nombre película"
         searchController?.searchBar.setBackgroundImage(image ,for: UIBarPosition.top, barMetrics: UIBarMetrics.default)
         return searchController
     }
     
+    // Creacion de Alert
     static func showPopUp(_ title:String,_ msg:String,_ view: UIViewController){
         KVLoading.hide()
         let alertController = UIAlertController(title: title, message: msg, preferredStyle: UIAlertControllerStyle.alert)

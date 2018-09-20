@@ -15,6 +15,7 @@ class ListMovieVM {
     var filteredMovies = [Movie]()
     var activeSearch = false
     
+    // Descarga de lista de peliculas filtrando el tipo
     func getListMovies(_ typeList: TypeMovie, success:@escaping ([Movie]) -> Void, failure:@escaping (Error) -> Void) {
         KVLoading.show()
         Services.getListMovies(typeList: typeList, success: { (resultMovies) in
@@ -26,7 +27,6 @@ class ListMovieVM {
             failure(error)
         }
     }
-    
     
     // Busca la pelicula seleccionada en cualuqier lista por "id" en posicion de la lista
     func getCurrentMovieDetail(_ idx: Int) -> Movie{

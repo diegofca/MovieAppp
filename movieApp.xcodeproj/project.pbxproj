@@ -37,7 +37,6 @@
 		A2D053E22152DD0A001549B6 /* PopularMovies.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D053E12152DD0A001549B6 /* PopularMovies.swift */; };
 		A2D053E42152E0EB001549B6 /* TopRatingMovies.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D053E32152E0EB001549B6 /* TopRatingMovies.swift */; };
 		A2D053E62152EC23001549B6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D053E52152EC23001549B6 /* HomeViewController.swift */; };
-		A2D053EB21530567001549B6 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D053DF21529EBB001549B6 /* Utils.swift */; };
 		F6AAFD934380BD72985607F6 /* Pods_movieAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C546D8B01D7488A512DBBC85 /* Pods_movieAppTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -204,10 +203,9 @@
 		A20A80F521503F4A004D0824 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A2865ABB21544BF400FAEDE4 /* IO */,
 				A20A80F821503F96004D0824 /* Movie.swift */,
-				A21985D5215054B6003C84DF /* Service.swift */,
 				A2D053DB21529AFA001549B6 /* Gender.swift */,
-				A2D053DF21529EBB001549B6 /* Utils.swift */,
 				A2D053E12152DD0A001549B6 /* PopularMovies.swift */,
 				A2D053E32152E0EB001549B6 /* TopRatingMovies.swift */,
 				A25A80732153F68300EF0E59 /* UpComingMovies.swift */,
@@ -248,7 +246,6 @@
 				A20A80CD21503924004D0824 /* Assets.xcassets */,
 				A20A80C621503920004D0824 /* AppDelegate.swift */,
 				A20A80CF21503924004D0824 /* LaunchScreen.storyboard */,
-				A20A80FC215041AB004D0824 /* Constants.swift */,
 				A25FFA3E215195110028F5BE /* images.xcassets */,
 				A25FFA452151AE520028F5BE /* Localizable.strings */,
 			);
@@ -269,6 +266,16 @@
 				A25FFA3921516F800028F5BE /* ItemListTableViewCell.swift */,
 			);
 			path = Items;
+			sourceTree = "<group>";
+		};
+		A2865ABB21544BF400FAEDE4 /* IO */ = {
+			isa = PBXGroup;
+			children = (
+				A20A80FC215041AB004D0824 /* Constants.swift */,
+				A2D053DF21529EBB001549B6 /* Utils.swift */,
+				A21985D5215054B6003C84DF /* Service.swift */,
+			);
+			path = IO;
 			sourceTree = "<group>";
 		};
 		F9E1C10B7FBCFDE76B0E06E8 /* Frameworks */ = {
@@ -544,7 +551,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A20A80DC21503924004D0824 /* movieAppTests.swift in Sources */,
-				A2D053EB21530567001549B6 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

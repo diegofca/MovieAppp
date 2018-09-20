@@ -18,15 +18,12 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         setViewModel()
+        // LLamado a descarga de generos
         viewModel.getListGenders( success: { (isSuccess) in
             self.nextTabsView()
         }, failure: { (error) in
             Utils.showPopUp("Error","Imposible descargar datos", self)
         })
-        
-        let realm = try! Realm()
-        print(realm.objects(GenderObject.self))
-        
     }
     
     func nextTabsView(){
@@ -37,11 +34,9 @@ class HomeViewController: UIViewController {
         viewModel = HomeVieMovieVM()
     }
     
-  
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "tabsMovieSegueView"{
-            if let detailView = segue.destination as? tabstMoviesView {
+            if segue.destination is tabstMoviesView {
             }
         }
     }

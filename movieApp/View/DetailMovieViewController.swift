@@ -36,6 +36,7 @@ class DetailMovieViewController: UIViewController {
         detailViewModel = DetailMovieVM()
     }
     
+    // Configuracion de la vista componentes UI
     func setUpView(){
         containerViewVideo.viewShadow()
         containerLabelsVideo.viewShadow()
@@ -55,17 +56,7 @@ class DetailMovieViewController: UIViewController {
     }
     
     @IBAction func backToList(_ sender: Any) {
-        print("fuck")
         backNavigation()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func backNavigation(){

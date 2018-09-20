@@ -29,6 +29,7 @@ class popularTableViewController:  UIViewController ,UITableViewDelegate, UITabl
         })
     }
 
+    // Configuracion de la vista componentes UI
     func setTableView(){
         searchController = Utils.creatingSearhBarToTable()
         searchController?.searchBar.delegate = self
@@ -36,6 +37,7 @@ class popularTableViewController:  UIViewController ,UITableViewDelegate, UITabl
         self.tableMoviesPopular.reloadData()
     }
     
+    //Delegado del searchBar
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if !searchText.isEmpty {
             self.viewModel.filteredMovies = self.viewModel.listMovies.filter{ $0.title.lowercased().contains(searchText.lowercased()) }
@@ -47,6 +49,7 @@ class popularTableViewController:  UIViewController ,UITableViewDelegate, UITabl
         self.tableMoviesPopular.reloadData()
     }
     
+    //Delegado del boton cancel del Searchbar
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         self.viewModel.filteredMovies.removeAll(keepingCapacity: true)
         self.viewModel.activeSearch = false
@@ -82,6 +85,7 @@ class popularTableViewController:  UIViewController ,UITableViewDelegate, UITabl
         return cell
     }
     
+    //Seleccion de objecto "Movie" para configurcion de envio a vista detalle
     @objc func sendMovie(_ sender: UIButton) {
         idMovieCurrent = sender.tag
         performSegue(withIdentifier: "detailSegueView", sender: sender)

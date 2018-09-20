@@ -22,9 +22,6 @@ class Movie: Mappable {
     var popularity: Float!
     var release_date: String!
     var path_trailer: String = "https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" // Deje el link quemado porque la lista que descargo no tiene ningun campo que retorne un link para video
-  
-    var firtsGender: String!
-    var secondGender: String!
     
     init() {}
     
@@ -41,7 +38,6 @@ class Movie: Mappable {
     }
     
     func mapping(map: Map) {}
-    
 }
 
 // Clase para base de datos local REALM IO
@@ -60,10 +56,6 @@ class MovieObject: Object{
     override class func primaryKey() -> String? {
         return "uId"
     }
-    
-    var firtsGender: GenderObject!
-    var secondGender: GenderObject!
-
 }
 
 // Clase para mapeo de list del objecto MOVIE

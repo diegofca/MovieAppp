@@ -1,5 +1,5 @@
 //
-//  TabsMovieVM.swift
+//  HomeVieMovieVM.swift
 //  movieApp
 //
 //  Created by Devp.ios on 19/09/18.
@@ -12,6 +12,7 @@ import KVLoading
 
 class HomeVieMovieVM {
 
+    // Descarga de lista de generos
     func getListGenders( success:@escaping (Bool) -> Void, failure:@escaping (Error) -> Void) {
         KVLoading.show()
         Services.getGenders( success: { (resultGenders) in
@@ -24,9 +25,8 @@ class HomeVieMovieVM {
         }
     }
     
-    
+    // Guarda los generos en base de datos local
     func saveGenders(_ genders: [Gender]){
-        //let action = realmR.objects(GenderObject.self).filter("id = '\(28)'").first!
         let realm = try! Realm()
         for nGender in genders {
             let oGender = GenderObject()
@@ -36,6 +36,5 @@ class HomeVieMovieVM {
                 realm.add(oGender, update: true)
             }
         }
-        print("Guardando generos")
     }
 }
