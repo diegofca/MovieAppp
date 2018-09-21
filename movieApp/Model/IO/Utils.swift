@@ -92,9 +92,14 @@ class Utils {
         let image = Constants.RED_WINE_COLOR.image(CGSize(width: 128, height: 128))
         searchController = UISearchController(searchResultsController: nil)
         searchController?.obscuresBackgroundDuringPresentation = false
-        searchController?.searchBar.placeholder = "Nombre película"
-        searchController?.searchBar.setBackgroundImage(image ,for: UIBarPosition.top, barMetrics: UIBarMetrics.default)
         return searchController
+    }
+    
+    // Creacion de Searchbar
+    static func setSearhBarToTable(_ searchBar : UISearchBar){
+        let image = Constants.RED_WINE_COLOR.image(CGSize(width: 128, height: 128))
+        searchBar.placeholder = "Nombre película"
+        searchBar.setBackgroundImage(image ,for: UIBarPosition.top, barMetrics: UIBarMetrics.default)
     }
     
     // Creacion de Alert

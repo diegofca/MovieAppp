@@ -12,10 +12,10 @@ import Material
 class popularTableViewController:  UIViewController ,UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     @IBOutlet var tableMoviesPopular : UITableView!
-    
+    @IBOutlet var searchBar: UISearchBar!
+
     var idMovieCurrent: Int = 0
     var viewModel : ListMovieVM!
-    var searchController: UISearchController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,14 +31,13 @@ class popularTableViewController:  UIViewController ,UITableViewDelegate, UITabl
 
     // Configuracion de la vista componentes UI
     func setTableView(){
-        searchController = Utils.creatingSearhBarToTable()
-        searchController?.searchBar.delegate = self
-        self.tableMoviesPopular.tableHeaderView = searchController?.searchBar
+        Utils.setSearhBarToTable(searchBar)
         self.tableMoviesPopular.reloadData()
     }
     
     //Delegado del searchBar
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchBar.showsCancelButton = true
         if !searchText.isEmpty {
             self.viewModel.filteredMovies = self.viewModel.listMovies.filter{ $0.title.lowercased().contains(searchText.lowercased()) }
             self.viewModel.activeSearch = true
@@ -51,14 +50,22 @@ class popularTableViewController:  UIViewController ,UITableViewDelegate, UITabl
     
     //Delegado del boton cancel del Searchbar
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.text = nil
+        searchBar.endEditing(true)
         self.viewModel.filteredMovies.removeAll(keepingCapacity: true)
         self.viewModel.activeSearch = false
         self.tableMoviesPopular.reloadData()
     }
-  
-
-    //MARK: Pragma TableView   - - - - - - - - --
     
+    //Delegado del boton buscar del Searchbar
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.resignFirstResponder()
+        self.tableMoviesPopular.reloadData()
+    }
+  
+    //MARK: Pragma TableView   - - - - - - - - --
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return !self.viewModel.activeSearch ? self.viewModel.listMovies.count : self.viewModel.filteredMovies.count
     }

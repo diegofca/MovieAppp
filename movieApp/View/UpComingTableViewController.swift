@@ -10,16 +10,16 @@ import UIKit
 
 class UpComingTableViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource, UISearchBarDelegate{
     
-    @IBOutlet var tableTopRatingPopular : UITableView!
+    @IBOutlet var tableUpComingPopular : UITableView!
     var idMovieCurrent: Int = 0
     var viewModel : ListMovieVM!
-    var searchController: UISearchController?
-    
+    @IBOutlet var searchBar: UISearchBar!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = ListMovieVM()  // Crea instancia de viewmodel de la vista
         viewModel.getListMovies( .Upcoming ,success: { (resultMovies) in
-            self.tableTopRatingPopular.reloadData()
+            self.tableUpComingPopular.reloadData()
             self.setTableView()
         }, failure: { (error) in
             Utils.showPopUp("Error","Imposible descargar datos", self)
@@ -28,14 +28,13 @@ class UpComingTableViewController: UIViewController ,UITableViewDelegate,UITable
     
     // Configuracion de la vista componentes UI
     func setTableView(){
-        searchController = Utils.creatingSearhBarToTable()
-        searchController?.searchBar.delegate = self
-        self.tableTopRatingPopular.tableHeaderView = searchController?.searchBar
-        self.tableTopRatingPopular.reloadData()
+        Utils.setSearhBarToTable(searchBar)
+        self.tableUpComingPopular.reloadData()
     }
     
-    //Delegado del boton cancel del Searchbar
+    //Delegado del searchBar
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchBar.showsCancelButton = true
         if !searchText.isEmpty {
             self.viewModel.filteredMovies = self.viewModel.listMovies.filter{ $0.title.lowercased().contains(searchText.lowercased()) }
             self.viewModel.activeSearch = true
@@ -43,14 +42,24 @@ class UpComingTableViewController: UIViewController ,UITableViewDelegate,UITable
             self.viewModel.filteredMovies.removeAll(keepingCapacity: true)
             self.viewModel.activeSearch = false
         }
-        self.tableTopRatingPopular.reloadData()
+        self.tableUpComingPopular.reloadData()
     }
     
     //Delegado del boton cancel del Searchbar
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.text = nil
+        searchBar.endEditing(true)
         self.viewModel.filteredMovies.removeAll(keepingCapacity: true)
         self.viewModel.activeSearch = false
-        self.tableTopRatingPopular.reloadData()
+        self.tableUpComingPopular.reloadData()
+    }
+    
+    //Delegado del boton buscar del Searchbar
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.resignFirstResponder()
+        self.tableUpComingPopular.reloadData()
     }
   
     // Delegate UITable Funcs

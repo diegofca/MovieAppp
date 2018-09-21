@@ -12,10 +12,10 @@ import Material
 class TopRatingTableViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource, UISearchBarDelegate {
 
     @IBOutlet var tableTopRatingPopular : UITableView!
-    
+    @IBOutlet var searchBar: UISearchBar!
+
     var idMovieCurrent: Int = 0
     var viewModel : ListMovieVM!
-    var searchController: UISearchController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,16 +29,15 @@ class TopRatingTableViewController: UIViewController ,UITableViewDelegate,UITabl
         })
     }
     
+    // Configuracion de la vista componentes UI
     func setTableView(){
-        searchController = Utils.creatingSearhBarToTable()
-        searchController?.searchBar.delegate = self
-        self.tableTopRatingPopular.tintColor = UIColor.orange
-        self.tableTopRatingPopular.tableHeaderView = searchController?.searchBar
+        Utils.setSearhBarToTable(searchBar)
         self.tableTopRatingPopular.reloadData()
     }
     
     //Delegado del searchBar
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchBar.showsCancelButton = true
         if !searchText.isEmpty {
             self.viewModel.filteredMovies = self.viewModel.listMovies.filter{ $0.title.lowercased().contains(searchText.lowercased()) }
             self.viewModel.activeSearch = true
@@ -51,8 +50,18 @@ class TopRatingTableViewController: UIViewController ,UITableViewDelegate,UITabl
     
     //Delegado del boton cancel del Searchbar
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.text = nil
+        searchBar.endEditing(true)
         self.viewModel.filteredMovies.removeAll(keepingCapacity: true)
         self.viewModel.activeSearch = false
+        self.tableTopRatingPopular.reloadData()
+    }
+    
+    //Delegado del boton buscar del Searchbar
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.resignFirstResponder()
         self.tableTopRatingPopular.reloadData()
     }
     

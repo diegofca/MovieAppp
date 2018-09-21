@@ -52,7 +52,11 @@ class Services {
     
     // Servicio de descarga de imagenes
     static func getImageUrl(nameResocurce: String, imageUrl: String, success:@escaping (UIImage) -> Void, failure:@escaping (Error) -> Void ) {
-        Alamofire.request(imageUrl).responseImage { response in
+        
+        Alamofire.request (imageUrl, method: .get,
+                           parameters:  nil,
+                           encoding:  URLEncoding.default,
+                           headers: nil ).responseImage { response in
             if response.result.isSuccess {
                 if let imageResult = response.result.value {
                     let image = imageResult
