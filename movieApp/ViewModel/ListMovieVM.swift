@@ -29,7 +29,7 @@ class ListMovieVM {
     }
     
     // Busca la pelicula seleccionada en cualuqier lista por "id" en posicion de la lista
-    func getCurrentMovieDetail(_ idx: Int) -> Movie{
+    func getCurrentMovieDetail(_ idx: Int) -> Movie {
         var currentMovie: Movie!
         if(!activeSearch){
             currentMovie = listMovies[idx]
@@ -82,7 +82,7 @@ class ListMovieVM {
         }
     }
     
-    // Guarda peliculas top rating en base de datos local
+    // Guarda peliculas up coming en base de datos local
     func saveUpComingMovieList(_ list: [Movie]) {
         let realm = try! Realm()
         for nMovie in list {
